@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        body {
+            width:1000px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+<canvas id="myChart" width="1180" height="430"></canvas>
+
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['2022-01-24','2022-01-25','2022-01-26','2022-01-27','2022-01-28','2022-01-29','2022-01-30','2022-01-31','2022-02-01',
+        '2022-02-02','2022-02-03','2022-02-04','2022-02-05','2022-02-06','2022-02-07','2022-02-08','2022-02-09','2022-02-10','2022-02-11',
+        '2022-02-12','2022-02-13','2022-02-14','2022-02-15','2022-02-16','2022-02-17','2022-02-18','2022-02-19','2022-02-20','2022-02-21',
+        '2022-02-22','2022-02-23'], 
+        'datasets': [
+                {
+                    label: 'Business',
+                    backgroundColor: '#BF625A',
+                    data: [2,0,0,2,0,4,2,0,2,2,1,0,0,2,2,0,1,1,0,2,2,2,0,2,0,0,1,1,0,1,0],
+                    datalabels: {
+                        labels: {
+                        title: null
+                        }
+                    }
+                },
+                {
+                    label: 'New',
+                    backgroundColor: '#76B7B2',
+                    data: [9,13,23,17,21,12,29,21,16,16,17,12,14,15,12,20,17,8,11,19,15,12,17,20,15,10,24,22,20,14,10],
+                },
+                {
+                    label: 'Used',
+                    backgroundColor: '#65A653',
+                    data: [18,5,14,23,10,16,11,11,7,8,12,6,9,8,6,6,11,13,10,14,13,10,13,5,7,11,10,22,14,21,17],
+                },
+                {
+                    label: '',
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                    data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    datalabels: {
+                        align : 'top',
+                        color: 'rgba(0, 0, 0, 0.5)',
+                        formatter: function(value, context) {
+                            return [42,31,32,42,32,25,26,30,18,23,25,20,26,29,22,21,35,30,24,30,27,22,21,35,45,34,36,27,38,18,26][context.dataIndex];
+                        },
+    
+                    },
+                }
+            ]  
+    },
+    plugins: [ChartDataLabels],
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Orders by Condition daily',
+                font: {
+                    weight: 'bold',
+                    size: 18,
+                }
+            },
+            datalabels: {
+                color: 'rgba(0, 0, 0, 0.7)',
+                font: {
+                    weight: 'bold',
+                    size: 12
+                    },
+               
+            
+            }
+        },
+        responsive: true,
+        scales: {
+        x: {
+            stacked: true,
+            },
+        y: {
+            stacked: true
+            }
+        }
+    }
+});
+</script>
+</div>
+</body>
+</html>
